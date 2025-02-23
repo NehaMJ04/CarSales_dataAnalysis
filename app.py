@@ -21,7 +21,8 @@ def plot_to_base64(plt):
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return jsonify({"message": "Flask API is running!"})  # ✅ RETURN JSON INSTEAD
+
 
 @app.route('/analysis1')
 def analysis1():
