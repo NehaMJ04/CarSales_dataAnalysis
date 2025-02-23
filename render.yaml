@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: my-service           # Change to your preferred service name
+    env: python
+    runtime: python3
+    pythonVersion: 3.9.16      # or another supported version, e.g., 3.10.13
+
+    # APT packages needed to fix your "ipopt" error
+    apt:
+      packages:
+        - coinor-libipopt-dev
+        - pkg-config
+
+    buildCommand: |
+      # Upgrade pip first
+      pip install --upgrade pip
+      # Install your Python dependencies
+      pip install -r requirements.txt
+
+    # Command to start your web app
+    startCommand: gunicorn main:app
